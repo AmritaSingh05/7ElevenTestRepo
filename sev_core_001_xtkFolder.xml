@@ -1,0 +1,827 @@
+﻿<?xml version='1.0'?>
+<package author="Amrita (amritaks)" buildDate="2022-10-27 04:14:40.067Z" buildNumber="9349"
+         buildVersion="6.7" img="xtk:installedPackage.png" label="SEV_AMS_002_XTKFOLDER"
+         name="SEV_AMS_002_XTKFOLDER" namespace="sev" vendor="">
+  <entities schema="xtk:folder">
+    <folder entity="xtk:folder" image-name="folder.png" image-namespace="xtk" label="7-11 Data"
+            model="xtkFolder" name="sevSevenElevenData" order="12">
+      <rights inherit="0" propagate="1" rights="read">
+        <folder _operation="none" name="sevSevenElevenData"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="0" propagate="1" rights="read">
+        <folder _operation="none" name="sevSevenElevenData"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema=""/>
+    </folder>
+    <folder entity="xtk:folder" label="Account" model="account" name="sevAccount"
+            order="1" schema="sev:account">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevAccount"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevAccount"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:account"/>
+    </folder>
+    <folder entity="xtk:folder" label="Address" model="address" name="sevAddress"
+            order="9" schema="sev:address">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevAddress"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevAddress"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:address"/>
+    </folder>
+    <folder entity="xtk:folder" label="Aggregates" model="aggregate" name="sevAggregate"
+            order="12" schema="sev:aggregate">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevAggregate"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevAggregate"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:aggregate"/>
+    </folder>
+    <folder entity="xtk:folder" label="Devices" model="device" name="sevDevice" order="7"
+            schema="sev:device">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevDevice"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevDevice"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:device"/>
+    </folder>
+    <folder entity="xtk:folder" label="Feature Allocations" model="featureAllocation"
+            name="sevFeatureAllocation" order="5" schema="sev:featureAllocation">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevFeatureAllocation"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevFeatureAllocation"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:featureAllocation"/>
+    </folder>
+    <folder entity="xtk:folder" label="Features" model="feature" name="sevFeature"
+            order="3" schema="sev:feature">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevFeature"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevFeature"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:feature"/>
+    </folder>
+    <folder entity="xtk:folder" label="Fuel Locks" model="fuelLock" name="sevFuelLocks"
+            order="12" schema="sev:fuelLock">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevFuelLocks"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevFuelLocks"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="sev:fuelLock"/>
+    </folder>
+    <folder entity="xtk:folder" label="NPS" model="nps" name="sevNps" order="8" schema="sev:nps">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevNps"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevNps"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:nps"/>
+    </folder>
+    <folder entity="xtk:folder" label="Proposition Rcp Archives" model="propositionRcpArchive"
+            name="sevPropositionRcpArchive" order="6" schema="sev:propositionRcpArchive">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevPropositionRcpArchive"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevPropositionRcpArchive"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:propositionRcpArchive"/>
+    </folder>
+    <folder entity="xtk:folder" label="Segments" model="segment" name="sevSegment"
+            order="4" schema="sev:segment">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevSegment"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevSegment"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:segment"/>
+    </folder>
+    <folder entity="xtk:folder" label="Transaction Headers" model="transactionHeader"
+            name="sevTransactionHeader" order="2" schema="sev:transactionHeader">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevTransactionHeader"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevTransactionHeader"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:transactionHeader"/>
+    </folder>
+    <folder entity="xtk:folder" label="Transactions Detail" model="transactionDetail"
+            name="sevTransactionDetail" order="11" schema="sev:transactionDetail">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevTransactionDetail"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevTransactionDetail"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <where filteringSchema="sev:transactionDetail"/>
+    </folder>
+    <folder entity="xtk:folder" label="Transactions Payment" model="transactionPayment"
+            name="sevTransactionsPayment" order="14" schema="sev:transactionPayment">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevTransactionsPayment"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevTransactionsPayment"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="sev:transactionPayment"/>
+    </folder>
+    <folder entity="xtk:folder" label="Visits" model="visit" name="sevVisits" order="15"
+            schema="sev:visit">
+      <parent _operation="none" name="sevSevenElevenData"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevVisits"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevVisits"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="sev:visit"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="workflow.png" image-namespace="xtk" label="Seven Eleven Process"
+            model="xtkWorkflow" name="sevSevenElevenProcess" order="5" schema="xtk:workflow">
+      <parent _operation="none" name="nmsTechnicalWorkflow"/>
+      <where filteringSchema="xtk:workflow"/>
+    </folder>
+    <folder entity="nms:program" image-name="program.png" image-namespace="nms" label="Init"
+            model="nmsProgram" name="sevInitCamp" order="1" schema="nms:operation">
+      <parent _operation="none" name="nmsOperations"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevInitCamp"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevInitCamp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:operation"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="folder.png" image-namespace="xtk" label="Data, Channel, Campaign Management"
+            model="xtkFolder" name="sevDataChannelCampaignMngmt" order="10">
+      <where filteringSchema=""/>
+    </folder>
+    <folder entity="xtk:folder" image-name="workflow.png" image-namespace="xtk" label="Import-Export workflows"
+            model="xtkWorkflow" name="sevExportImport" order="1" schema="xtk:workflow">
+      <parent _operation="none" name="sevDataChannelCampaignMngmt"/>
+      <where filteringSchema="xtk:workflow"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="workflow.png" image-namespace="xtk" label="ExportSegments"
+            model="xtkWorkflow" name="sevExport" order="2" schema="xtk:workflow">
+      <parent _operation="none" name="sevExportImport"/>
+      <where filteringSchema="xtk:workflow"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="workflow.png" image-namespace="xtk" label="Import"
+            model="xtkWorkflow" name="sevImport" order="1" schema="xtk:workflow">
+      <parent _operation="none" name="sevExportImport"/>
+      <where filteringSchema="xtk:workflow"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="folderview.png" image-namespace="nms"
+            label="Personalization blocks" model="nmsIncludeView" name="sevRTPersonalisationBlocks"
+            order="4" schema="nms:includeView">
+      <parent _operation="none" name="nmsMc"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevRTPersonalisationBlocks"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevRTPersonalisationBlocks"/>
+        <operator _operation="none" name="report" type="1"/>
+      </rights>
+      <where filteringSchema="nms:includeView"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="folderview.png" image-namespace="nms"
+            label="eCommerce" model="nmsIncludeView" name="sevRTECommercePersonalisationBlocks"
+            order="1" schema="nms:includeView">
+      <parent _operation="none" name="sevRTPersonalisationBlocks"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevRTECommercePersonalisationBlocks"/>
+        <operator _operation="none" name="report" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevRTECommercePersonalisationBlocks"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <where filteringSchema="nms:includeView"/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="Android RT - FPL PAP Failure Push Notification (sevPapFailure)"
+            model="nmsDelivery" name="sevPapFailure">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="Android RT - FPL Saving Push Notification (sevFPLSavingAndroidRTTemplate)"
+            model="nmsDelivery" name="sevFPLSavingAndroidRTTemplate">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevFPLSavingAndroidRTTemplate"/>
+        <operator _operation="none" name="sevCSR" type="1"/>
+      </rights>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="Android RT - PAP Failure Push Notification (sevPapFailureAnd)"
+            model="nmsDelivery" name="sevPapFailureAnd">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="Android RT -  PAP Success Push Notification (sevPapSuccessAnd)"
+            model="nmsDelivery" name="sevPapSuccessAnd">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="iOS RT - FPL Saving Push Notification (sevFPLSavingiOsRTTemplate)"
+            model="nmsDelivery" name="sevFPLSavingiOsRTTemplate">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevFPLSavingiOsRTTemplate"/>
+        <operator _operation="none" name="sevCSR" type="1"/>
+      </rights>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="iOS RT - P@P FAILURE Push Notification (sevPapFailOs)"
+            model="nmsDelivery" name="sevPapFailOs">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="iOS RT - P@P Success Push Notification (sevPapSuccessOs)"
+            model="nmsDelivery" name="sevPapSuccessOs">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="New Credit Memo Guest (TL Refund) (sevRTEmailNewCreditMemoGuest)"
+            model="nmsDelivery" name="sevRTEmailNewCreditMemoGuest">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="New Credit Memo (MCO Refund) (sevRTEmailNewCreditMemo)"
+            model="nmsDelivery" name="sevRTEmailNewCreditMemo">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="New Credit Memo (P@P Refund) (sevRTEmailPAPNewCreditMemo)"
+            model="nmsDelivery" name="sevRTEmailPAPNewCreditMemo">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="New Invoice Guest (TL Invoice) (sevRTEmailNewInvoiceGuest)"
+            model="nmsDelivery" name="sevRTEmailNewInvoiceGuest">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="New Invoice (MCO Invoice) (sevRTEmailNewInvoice)"
+            model="nmsDelivery" name="sevRTEmailNewInvoice">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder builtIn="1" image-name="campaign.png" image-namespace="nms" label="New Invoice (P@P Invoice) (sevRTEmailPAPNewInvoice)"
+            model="nmsDelivery" name="sevRTEmailPAPNewInvoice">
+      <parent _operation="none" name="nmsMcTriggerMessagesHisto"/>
+      <where filteringSchema=""/>
+    </folder>
+    <folder entity="xtk:folder" image-name="deliveryModel.png" image-namespace="nms"
+            label="eCommerce" model="nmsTriggerMessages" name="sevRTECommerce" order="1"
+            schema="nms:delivery">
+      <parent _operation="none" name="nmsTriggerMessagesInstances"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevRTECommerce"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevRTECommerce"/>
+        <operator _operation="none" name="report" type="1"/>
+      </rights>
+      <where filteringSchema="nms:delivery"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="deliveryModel.png" image-namespace="nms"
+            label="FPL" model="nmsTriggerMessages" name="sevRTFPL" order="3" schema="nms:delivery">
+      <parent _operation="none" name="nmsTriggerMessagesInstances"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevRTFPL"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevRTFPL"/>
+        <operator _operation="none" name="report" type="1"/>
+      </rights>
+      <where filteringSchema="nms:delivery"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="deliveryModel.png" image-namespace="nms"
+            label="PAP" model="nmsTriggerMessages" name="sevPAP" order="4" schema="nms:delivery">
+      <parent _operation="none" name="nmsTriggerMessagesInstances"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevPAP"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevPAP"/>
+        <operator _operation="none" name="report" type="1"/>
+      </rights>
+      <where filteringSchema="nms:delivery"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="deliveryModel.png" image-namespace="nms"
+            label="Testing" model="nmsTriggerMessages" name="sevRTTesting" order="2"
+            schema="nms:delivery">
+      <parent _operation="none" name="nmsTriggerMessagesInstances"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevRTTesting"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevRTTesting"/>
+        <operator _operation="none" name="report" type="1"/>
+      </rights>
+      <where filteringSchema="nms:delivery"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="simulation.png" image-namespace="nms"
+            label="Simulations" model="nmsSimulation" name="sevDesignSimulation"
+            order="3" schema="nms:simulation">
+      <parent _operation="none" name="nmsOfferAdmin_designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevDesignSimulation"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevDesignSimulation"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:simulation"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="typofolder.png" image-namespace="nms"
+            label="Typologies" model="nmsTypology" name="sevTypologydesignRcp" order="5"
+            schema="nms:typology">
+      <parent _operation="none" name="nmsOfferAdmin_designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevTypologydesignRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevTypologydesignRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:typology"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="typorulefolder.png" image-namespace="nms"
+            label="Typology rules" model="nmsTypologyRule" name="sevTypologyRuledesignRcp"
+            order="4" schema="nms:typologyRule">
+      <parent _operation="none" name="nmsOfferAdmin_designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevTypologyRuledesignRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevTypologyRuledesignRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:typologyRule"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="App exclusive" model="nmsOfferCategory"
+            name="sevAppExclusive" order="5" schema="nms:offer">
+      <parent _operation="none" name="designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevAppExclusive"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevAppExclusive"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="Contextual App exclusive" model="nmsOfferCategory"
+            name="sevContextualAppExclusive" order="2" schema="nms:offer">
+      <parent _operation="none" name="sevAppExclusive"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevContextualAppExclusive"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevContextualAppExclusive"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="Archives" model="nmsOfferCategory" name="sevArchive"
+            order="10" schema="nms:offer">
+      <parent _operation="none" name="designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevArchive"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevArchive"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="Choice Bonus Rewards" model="nmsOfferCategory"
+            name="sevChoiceBonusReward" order="9" schema="nms:offer">
+      <parent _operation="none" name="designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevChoiceBonusReward"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevChoiceBonusReward"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="Default offer category" model="nmsOfferCategory"
+            name="sevDefaultOfferCategory" order="2" schema="nms:offer">
+      <where filteringSchema="nms:offer"></where>
+      <parent _operation="none" name="designRcp"/>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevDefaultOfferCategory"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="0" propagate="1" rights="read">
+        <folder _operation="none" name="sevDefaultOfferCategory"/>
+        <operator _operation="none" name="testO" type="0"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read">
+        <folder _operation="none" name="sevDefaultOfferCategory"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="Fuel Lock" model="nmsOfferCategory" name="sevFuelLock"
+            order="4" schema="nms:offer">
+      <parent _operation="none" name="designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevFuelLock"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevFuelLock"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="In Stores" model="nmsOfferCategory" name="sevInStore"
+            order="6" schema="nms:offer">
+      <parent _operation="none" name="designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevInStore"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevInStore"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="Standard Bonus Rewards" model="nmsOfferCategory"
+            name="sevStandardBonusReward" order="8" schema="nms:offer">
+      <parent _operation="none" name="designRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevStandardBonusReward"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevStandardBonusReward"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1875" image-name="offerCategory.png"
+            image-namespace="nms" label="Contextual Standard Bonus Rewards" model="nmsOfferCategory"
+            name="sevContextualStandardBonusReward" order="1" schema="nms:offer">
+      <parent _operation="none" name="sevStandardBonusReward"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevContextualStandardBonusReward"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevContextualStandardBonusReward"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="App exclusive" model="nmsOfferCategory"
+            name="sevAppExclusive_liveRcp" order="5" schema="nms:offer">
+      <parent _operation="none" name="liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevAppExclusive_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevAppExclusive_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevAppExclusive_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="Contextual App exclusive" model="nmsOfferCategory"
+            name="sevContextualAppExclusive_liveRcp" order="2" schema="nms:offer">
+      <parent _operation="none" name="sevAppExclusive_liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevContextualAppExclusive_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevContextualAppExclusive_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevContextualAppExclusive_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="Archives" model="nmsOfferCategory" name="sevArchive_liveRcp"
+            order="10" schema="nms:offer">
+      <parent _operation="none" name="liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevArchive_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevArchive_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevArchive_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="Choice Bonus Rewards" model="nmsOfferCategory"
+            name="sevChoiceBonusReward_liveRcp" order="8" schema="nms:offer">
+      <parent _operation="none" name="liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevChoiceBonusReward_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevChoiceBonusReward_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevChoiceBonusReward_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="Default offer category" model="nmsOfferCategory"
+            name="sevDefaultOfferCategory_liveRcp" order="2" schema="nms:offer">
+      <parent _operation="none" name="liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevDefaultOfferCategory_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevDefaultOfferCategory_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevDefaultOfferCategory_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="Fuel Lock" model="nmsOfferCategory" name="sevFuelLock_liveRcp"
+            order="3" schema="nms:offer">
+      <parent _operation="none" name="liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevFuelLock_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevFuelLock_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevFuelLock_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="In Stores" model="nmsOfferCategory" name="sevInStore_liveRcp"
+            order="5" schema="nms:offer">
+      <parent _operation="none" name="liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevInStore_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevInStore_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevInStore_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="Standard Bonus Rewards" model="nmsOfferCategory"
+            name="sevStandardBonusReward_liveRcp" order="8" schema="nms:offer">
+      <parent _operation="none" name="liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevStandardBonusReward_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevStandardBonusReward_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevStandardBonusReward_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="0" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevStandardBonusReward_liveRcp"/>
+        <operator _operation="none" name="sevCSR" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="nms:offerCategory" env-id="1874" image-name="offerCategory.png"
+            image-namespace="nms" label="Contextual Standard Bonus Rewards" model="nmsOfferCategory"
+            name="sevContextualStandardBonusReward_liveRcp" order="1" schema="nms:offer">
+      <parent _operation="none" name="sevStandardBonusReward_liveRcp"/>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevContextualStandardBonusReward_liveRcp"/>
+        <operator _operation="none" name="sevCSR" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevContextualStandardBonusReward_liveRcp"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevContextualStandardBonusReward_liveRcp"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write">
+        <folder _operation="none" name="sevContextualStandardBonusReward_liveRcp"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:offer"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="unknownad.png" image-namespace="nms"
+            label="CRM Marketing History Daily report" model="nmsSeedList" name="sevMarketingHistoryDailyAlert"
+            order="1" schema="nms:seedMember">
+      <parent _operation="none" name="nmsSeedList"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevMarketingHistoryDailyAlert"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevMarketingHistoryDailyAlert"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:seedMember"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="textfile.png" image-namespace="xtk" label="Offers"
+            model="xtkFileRes" name="sevOffers" order="1" schema="xtk:fileRes">
+      <parent _operation="none" name="xtkFileRes"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevOffers"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevOffers"/>
+        <operator _operation="none" name="offer" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevOffers"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="xtk:fileRes"/>
+    </folder>
+    <folder entity="nms:program" image-name="operation.png" image-namespace="nms"
+            label="Adobe standard Campaign templates" model="nmsOperationModel" name="sevStandardCampaignTemplates"
+            order="1" schema="nms:operation">
+      <parent _operation="none" name="nmsOperationModel"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevStandardCampaignTemplates"/>
+        <operator _operation="none" name="operation" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevStandardCampaignTemplates"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:operation"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="deliveryModel.png" image-namespace="nms"
+            label="Adobe standard templates" model="nmsDeliveryModel" name="sevAdobeStandardTemplates"
+            order="1" schema="nms:delivery">
+      <parent _operation="none" name="nmsDeliveryModel"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevAdobeStandardTemplates"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevAdobeStandardTemplates"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:delivery"/>
+    </folder>
+    <folder entity="xtk:folder" image-name="deliveryModel.png" image-namespace="nms"
+            label="Report Delivery templates" model="nmsDeliveryModel" name="sevReportDeliveryTemplates"
+            order="3" schema="nms:delivery">
+      <parent _operation="none" name="nmsDeliveryModel"/>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevReportDeliveryTemplates"/>
+        <operator _operation="none" name="delivery" type="1"/>
+      </rights>
+      <rights inherit="1" propagate="1" rights="read|write|delete">
+        <folder _operation="none" name="sevReportDeliveryTemplates"/>
+        <operator _operation="none" name="sevMarketing" type="1"/>
+      </rights>
+      <where filteringSchema="nms:delivery"/>
+    </folder>
+  </entities>
+  <entities schema="xtk:specFile">
+    <specFile img="xtk:installedPackage.png" includeDefaultValues="false" includeInstallScript="false"
+              includeSpec="true" label="SEV_AMS_002_XTKFOLDER" name="SEV_AMS_002_XTKFOLDER"
+              namespace="sev" type="0">
+      <desc><![CDATA[SEV_AMS_002_XTKFOLDER]]></desc>
+      <definition automaticDefinition="false" id="2938568716" lineCountMax="5000"
+                  schema="xtk:folder">
+        <where displayFilter="internal name starts with 'sev'">
+          <condition compositeKey="" dependkey="" enabledIf="" expr="@name LIKE 'sev' + '%'"
+                     internalId="2938699789"/>
+        </where>
+      </definition>
+      <execution buildDate="2020-04-23 04:02:40.109Z" fileName="package_sev_SEV_AMS_002_XTKFOLDER.xml"
+                 filePath="/usr/local/neolane/nl6/var/sevenel_mkt_stage1/upload/"
+                 fileSize="24139" objectCount="33"/>
+      <properties>
+        <progress current="0" max="0"/>
+      </properties>
+    </specFile>
+  </entities>
+</package>

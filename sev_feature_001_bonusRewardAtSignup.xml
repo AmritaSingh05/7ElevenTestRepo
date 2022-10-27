@@ -1,0 +1,409 @@
+﻿<?xml version='1.0'?>
+<package author="Amrita (amritaks)" buildDate="2022-10-27 04:10:51.612Z" buildNumber="9349"
+         buildVersion="6.7" img="xtk:installedPackage.png" label="#226505 - Bonus Reward - Generate at signup"
+         name="bonusRewardAtSignup" namespace="sev" vendor="">
+  <entities schema="xtk:option">
+    <option dataType="3" longValue="15" name="sevBonusRewardOfferCount">
+      <desc>Max Count of Bonus Reward Propositions to be generated for a customer</desc>
+    </option>
+  </entities>
+  <entities schema="xtk:javascript">
+    <javascript entitySchema="xtk:javascript" img="xtk:javascript.png" label="711 - Create Recipient Library"
+                name="createRecipient.js" namespace="sev">
+      <data><![CDATA[loadLibrary("xtk:shared/nl.js");
+NL.require('/nl/core/shared/xml.js');
+loadLibrary("sev:offer.js");
+
+
+/**
+ * Creates or updates a recipient along with email/SMS marketing consents
+ * @param {string} loyaltyId - unique identifier of the customer
+ * @param {string} contactId - CRM ID of the customer
+ * @param {string} email - email ID of the customer
+ * @param {string} email - email ID of the customer
+ * @param {int} registrationStatus - registration status of the customer
+ * @return {DOMElement} acresult
+ */
+function  nms_offer_CreateOrUpdateRecipient(loyaltyId, contactId, email, registrationStatus, doNotBulkEmail, mobileNumber, doNotBulkSMS)
+{
+
+  if (DEBUG) logInfo("** Create Recipient web service start ** " + loyaltyId + " - status: " + registrationStatus 
+                      + " - doNotBulkEmail:" + doNotBulkEmail + " - doNotBulkSMS:" + doNotBulkSMS)
+    
+  // Raise error if mandatory attributes are not provided
+  if(!loyaltyId)
+    logError("loyaltyId cannot be empty");
+  if(!contactId)
+    logError("contactId cannot be empty");
+  if(!email)
+    logError("email cannot be empty");
+  
+  try
+  {
+    var acresult = <acresult/>;
+    var loyaltyId = loyaltyId.toString();
+    var contactId = contactId.toUpperCase();
+    
+    // Querying database to check if recipient exists
+    var RecipientQueryDef = <queryDef schema="nms:recipient" operation="getIfExists">
+      <select>
+        <node expr="@id" alias="recipientId"/>                 
+      </select>
+      <where>          
+        <condition expr={"@contactid = "+NL.XTK.toXTKString(contactId)}/>  
+      </where>     
+    </queryDef>
+  
+    if (DEBUG) logInfo("Create Recipient web service - QueryDef: " +RecipientQueryDef);
+    
+    var query = xtk.queryDef.create(RecipientQueryDef);
+    var result = query.ExecuteQuery();
+    var recipientId = result.recipientId;
+    
+    
+    //If recipient exists, update recipient
+    var insertOrUpdate = "insert";
+    if(recipientId != undefined && recipientId != "") 
+    {
+      if(DEBUG) logInfo("Create Recipient web service - Updating recipientId: "+ recipientId + " for loyaltyId: " + loyaltyId);
+      insertOrUpdate = "update";
+      
+      var rcpWrite = <recipient _operation="update" 
+                                _key="@id" 
+                                id={recipientId} 
+                                donotbulkemail={doNotBulkEmail} 
+                                se_donotallowtext={doNotBulkSMS}
+                                mobilePhone={mobileNumber} 
+                                xtkschema="nms:recipient"/>
+      xtk.session.Write(rcpWrite);
+
+      var recipient = {recipient: {_key: "id", id: ""+recipientId+""}}
+      
+      // If DoNotBulkEmail is set to 1, then unsubscribe from Email service
+      if (doNotBulkEmail == 1)
+      {
+        nms.subscription.Unsubscribe("sevEmail", recipient)
+        if(DEBUG) logInfo("Create Recipient web service : "+ loyaltyId + " unsubscribed from sevEmail service"); 
+      }
+      // If DoNotBulkEmail is set to 0, then resubscribe to Email service
+      else if (doNotBulkEmail == 0)
+      {
+        nms.subscription.Subscribe("sevEmail", recipient, 0); 
+        if(DEBUG) logInfo("Create Recipient web service : "+ loyaltyId + " re-subscribed to sevEmail service"); 
+      }
+      
+      // If doNotBulkSMS is set to 1, then unsubscribe from SMS service
+      if (doNotBulkSMS == 1)
+      {
+        nms.subscription.Unsubscribe("sevSms", recipient)
+        if(DEBUG) logInfo("Create Recipient web service : "+ loyaltyId + " unsubscribed from sevSms service"); 
+      }
+      // If doNotBulkSMS is set to 0, then resubscribe to SMS service
+      else if (doNotBulkSMS == 0)
+      {
+        nms.subscription.Subscribe("sevSms", recipient, 0); 
+        if(DEBUG) logInfo("Create Recipient web service : "+ loyaltyId + " re-subscribed to sevSms service"); 
+      }
+           
+    }
+    //If recipient doesn't exist, create recipient
+    else 
+    {
+      if(DEBUG) logInfo("Create Recipient web service - Inserting recipientId: "+ recipientId + " for loyaltyId: " + loyaltyId);
+      
+      var rcpWrite = <recipient _operation="insert" 
+                                contactid={contactId} 
+                                se_loyaltyid={loyaltyId} 
+                                email={email} 
+                                mobilePhone={mobileNumber} 
+                                statuscode={NL.XTK.toXTKString(registrationStatus)} 
+                                donotbulkemail={NL.XTK.toXTKString(doNotBulkEmail)} 
+                                se_donotallowtext={NL.XTK.toXTKString(doNotBulkSMS)} 
+                                xtkschema="nms:recipient"/>
+      //if(DEBUG) logInfo("Create Recipient web service - Recipient creation: " + rcpWrite.toXMLString()); 
+      xtk.session.Write(rcpWrite);
+      
+      if(recipientId == undefined || recipientId == ""){
+        result = query.ExecuteQuery();
+        recipientId = result.recipientId;
+      }
+      
+      var recipient = {recipient: {_key: "id", id: ""+recipientId+""}}
+
+      // If DoNotBulkEmail is set to 0, then subscribe to Email service
+      if (doNotBulkEmail == 0){
+        nms.subscription.Subscribe("sevEmail", recipient, 0); 
+        if(DEBUG) logInfo("Create Recipient web service : "+ loyaltyId + " subscribed to sevEmail service"); 
+      }
+      
+      // If DoNotBulkEmail is set to 0, then subscribe to SMS service
+      if (doNotBulkSMS == 0){
+        nms.subscription.Subscribe("sevSms", recipient, 0); 
+        if(DEBUG) logInfo("Create Recipient web service : "+ loyaltyId + " subscribed to sevSms service"); 
+      }
+      
+      // Call to Interaction to collect App Exclusive Offers
+      var maxCount = getOption("sevAppExclusiveOfferCount");
+      var space = "sevAppExclusive";
+      var env = "liveRcp";
+      var action = "propose";
+      var category = '';
+      var theme = ''; 
+      var propositionStatus = getDefaultOfferPropositionStatus(space); 
+      var ctxOffset = 0; 
+     
+      if(DEBUG) logInfo("Create Recipient web service - Starting Interaction Propose App Exclusive for loyaltyId: " + loyaltyId);
+      var propositions = interactionPropose(space, env, recipientId, maxCount, category, theme, <empty/>);      
+
+      // Persist App Exclusive Offers in DB synchronously
+      var c = storeInteractionPropositions('CreateRecipient', propositions, recipientId, loyaltyId, ctxOffset, propositionStatus);
+
+      // Call to Interaction to collect Bonus Rewards Offers
+      var maxCount = getOption("sevBonusRewardOfferCount");
+      var space = "sevBonusRewards";
+      var env = "liveRcp";
+      var action = "propose";
+      var category = 'sevStandardBonusReward_liveRcp';
+      var theme = ''; 
+      var propositionStatus = getDefaultOfferPropositionStatus(space); 
+      var ctxOffset = 0; 
+     
+      if(DEBUG) logInfo("Create Recipient web service - Starting Interaction Propose Bonus Reward for loyaltyId: " + loyaltyId);
+      var propositions = interactionPropose(space, env, recipientId, maxCount, category, theme, <empty/>);     
+       
+      // Persist App Exclusive Offers in DB synchronously
+      if (propositions.proposition.length() > 0)
+       storeInteractionPropositions('CreateRecipient', propositions, recipientId, loyaltyId, ctxOffset, propositionStatus);
+    }
+    
+    acresult.appendChild(<recipientDetails status={"1"} loyaltyId={loyaltyId} recipientId={recipientId} insertOrUpdate={insertOrUpdate}/>);
+  }
+  catch(er)
+  {
+    acresult.appendChild(<recipientDetails status={"2"} loyaltyId={loyaltyId} recipientId={""} insertOrUpdate={""} exceptionMessage={er} />);
+  } 
+  
+  if(DEBUG) logInfo("Create Recipient web service - Output : "+ acresult + " " + loyaltyId);
+  if(DEBUG) logInfo("** Create Recipient web service end ** " + loyaltyId);
+  
+  return acresult;
+}
+
+/*
+ * Update email or SMS marketing consents for a given recipient
+ * (used by SubscribeRecipient/UnsubscribeRecipient API's)
+ * @param {string} serviceName - Name of the service to subscribe consumer to
+ * @param {string} contactId - CRM ID of the customer
+ * @param {int} optoutFlag - 1 if customer should be opted out, 0 if opted in to the service
+ * @param {string} apiName - used to determine which API is calling in logs
+ */
+function updateRecipientMarketingConsents(serviceName, contactId, optoutFlag, apiName)
+{
+  if (DEBUG) logInfo("** " + apiName + " web service start ** " + contactId + " - " + serviceName)
+
+  // Raise error if mandatory attributes are not provided
+  if(!serviceName || serviceName.length === 0 || !serviceName.trim())
+    logError("serviceName cannot be empty");
+  if(!contactId || contactId.length === 0 || !contactId.trim())
+    logError("contactId cannot be empty");
+
+  var acresult = <acresult/>;
+  var contactId = contactId.toUpperCase();
+
+  try
+  {
+    //If service doesn't exist throw an error
+    if(serviceName != 'sevSms' && serviceName != 'sevEmail') 
+    {
+      acresult.appendChild(<recipientDetails status={"2"} exceptionCode="serviceNotFound" exceptionMessage="Service not found in database" />);
+    }
+    // If service exists, lookup consumer
+    else 
+    {      
+      var rcp = getRecipientFromContactId(contactId);
+      if(DEBUG) logInfo(apiName + " web service : "+ contactId + " - query result: " + rcp.toXMLString()); 
+
+      var recipientId = rcp.@id;
+      var loyaltyId = rcp.@se_loyaltyid;
+      
+      //If recipient exists, update recipient marketing consents
+      if(recipientId != undefined && recipientId != "") 
+      {
+        // Update recipient email/SMS flags
+        var rcpWrite = <recipient _operation="update" _key="@id" id={recipientId} xtkschema="nms:recipient"/>
+        if (serviceName == 'sevEmail')
+          rcpWrite.@donotbulkemail = (parseInt(optoutFlag) == 1? true : false);
+        else if (serviceName == 'sevSms')
+          rcpWrite.@se_donotallowtext = (parseInt(optoutFlag) == 1? true : false);
+        if(DEBUG) logInfo("Unsubscribe/Subscribe Recipient web service : "+ loyaltyId + " -  query: " + rcpWrite.toXMLString()); 
+        xtk.session.Write(rcpWrite);
+        
+        // Subscribe/unsubscribe to service
+        var recipient = {recipient: {_key: "id", id: ""+recipientId+""}}
+        
+        if (optoutFlag == 1)
+        {
+          nms.subscription.Unsubscribe(serviceName, recipient)
+          if(DEBUG) logInfo(apiName + " web service: "+ loyaltyId + " - Unsubscribing from " + serviceName + " service"); 
+        }
+        else if (optoutFlag == 0)
+        {
+          nms.subscription.Subscribe(serviceName, recipient, 0); 
+          if(DEBUG) logInfo(apiName + " web service: "+ loyaltyId + " - Subscribing to " + serviceName + " service"); 
+        }        
+        acresult.appendChild(<recipientDetails status={"1"} loyaltyId={loyaltyId} />);
+      }
+      // If recipient doesn't exist throw an error
+      else 
+      {
+        acresult.appendChild(<recipientDetails status={"2"} exceptionCode="customerNotFound" exceptionMessage="Customer not found in database" />);
+      }
+    }    
+
+  }
+  catch(er)
+  {
+    acresult.appendChild(<recipientDetails status={"2"} exceptionCode="updateError" exceptionMessage={"Error while subscribing. Details: " + er} />);
+  } 
+
+  if(DEBUG) logInfo(apiName + " web service - Output : "+ acresult + " - " + contactId);
+  if(DEBUG) logInfo("** " + apiName + " web service end ** " + contactId + " - " + serviceName);
+  return acresult; 
+}
+
+/**
+ * Subscribe a consumer to a given subsription service
+ * @param {string} contactId - CRM ID of the customer
+ * @param {string} serviceName - Name of the service to subscribe consumer to
+ * @return {DOMElement} acresult
+ */
+function  nms_offer_SubscribeRecipient(serviceName, contactId)
+{
+  return updateRecipientMarketingConsents(serviceName, contactId, 0, "Subscribe Recipient");
+}
+
+
+/**
+ * Subscribe a consumer to a given subsription service
+ * @param {string} contactId - CRM ID of the customer
+ * @param {string} serviceName - Name of the service to subscribe consumer to
+ * @return {DOMElement} acresult
+ */
+function  nms_offer_UnsubscribeRecipient(serviceName, contactId)
+{
+  return updateRecipientMarketingConsents(serviceName, contactId, 1, "Unsubscribe Recipient");
+}
+
+
+/**
+ * Insert or update the last known location on App opening.
+ * @param {string} loyaltyId - unique identifier of the customer
+ * @param {string} lastKnownSuburb - CONTEXT DATA FROM APP - Suburb captured by the device
+ * @param {string} lastKnownState - CONTEXT DATA FROM APP - State captured by the device
+ * @param {long} ctxStoreId - CONTEXT DATA FROM APP - Store next to the device
+ * @param {long} ctxStoreDistance - CONTEXT DATA FROM APP - Distance From Store next to the device (in meter or km TBC)
+ * @return {DOMElement} acresult
+ */
+function nms_offer_UpdateLastKnownLocation(loyaltyId, lastKnownSuburb, lastKnownState, lastKnownStoreId, lastKnownStoreDistance)
+{
+
+  if (DEBUG) logInfo("** Update Last Known Location service start ** " + loyaltyId + " - " + lastKnownSuburb + " - " + lastKnownState + " - " + lastKnownStoreId + " - " + lastKnownStoreDistance )
+
+  // Raise error if mandatory attributes are not provided
+  if(!loyaltyId)
+    logError("loyaltyId cannot be empty");
+  if(!lastKnownStoreId)
+    logError("lastKnownStoreId cannot be empty");
+
+  var isUpdated = false
+  
+  try
+  {
+    var acresult = <acresult />
+  
+    // Get recipient, if not found, return custom error in the response
+    var recipientId = getRecipientIdIfExists(loyaltyId);
+
+    // Get store, if not found, return custom error in the response
+    var storeId = getStorePkIfExists(lastKnownStoreId.toString());
+
+    if (!recipientId)
+    {
+      acresult.appendChild(<lastKnownLocation 
+                                status={CONST_API_RETURN_FAILURE} 
+                                exceptionCode="customerNotFound" 
+                                exceptionMessage="Customer not found in database" />);
+    }
+    else
+    {        
+
+      var upd = <lastKnownLocation 
+                                _operation="insertOrUpdate" 
+                                _key="@recipient-id" 
+                                recipient-id={recipientId} 
+                                state={lastKnownState}
+                                suburb={lastKnownSuburb} 
+                                storeId={lastKnownStoreId} 
+                                storeFK={storeId} 
+                                storeDistance={lastKnownStoreDistance} 
+                                xtkschema="sev:lastKnownLocation" />
+
+      if (DEBUG) logInfo("Update Last Known Location service processing " + loyaltyId + " - " + upd.toXMLString() )
+
+      xtk.session.Write(upd);
+      
+      isUpdated = true
+
+      acresult.appendChild(<lastKnownLocation 
+                                status={CONST_API_RETURN_SUCCESS}
+                                loyaltyId={loyaltyId} /> );
+
+    }
+  }
+  catch(e)
+  {
+    if (DEBUG) logInfo("Update Last Known Location service - exception " + loyaltyId + " - " + e )
+    
+    if (!isUpdated)
+      acresult.appendChild(<lastKnownLocation
+                                status={CONST_API_RETURN_FAILURE} 
+                                exceptionCode="updateError" 
+                                exceptionMessage={"Location could not be updated. " + e} />);
+  }  
+
+  if (DEBUG) logInfo("** Update Last Known Location service end ** " + loyaltyId + " - " + acresult.toXMLString() )
+  
+  return acresult
+}
+]]></data>
+    </javascript>
+  </entities>
+  <entities schema="xtk:specFile">
+    <specFile img="xtk:installedPackage.png" includeDefaultValues="false" includeInstallScript="false"
+              includeSpec="true" label="#226505 - Bonus Reward - Generate at signup"
+              name="bonusRewardAtSignup" namespace="sev" type="0">
+      <desc><![CDATA[This feature allows the generation of eligible bonus reward (e.g. 7-11 day, Welcome offer) when customer signs up.
+
+User story #226505]]></desc>
+      <definition automaticDefinition="false" id="xtk:option,sevBonusRewardOfferCount"
+                  lineCountMax="5000" schema="xtk:option">
+        <where displayFilter="sevBonusRewardOfferCount">
+          <condition expr="@name='sevBonusRewardOfferCount'" internalId="1"/>
+        </where>
+      </definition>
+      <definition automaticDefinition="false" id="xtk:javascript,sev,createRecipient.js"
+                  lineCountMax="5000" schema="xtk:javascript">
+        <where displayFilter="sev:createRecipient.js">
+          <condition expr="@namespace='sev'" internalId="1"/>
+          <condition expr="@name='createRecipient.js'" internalId="2"/>
+        </where>
+      </definition>
+      <execution buildDate="2022-10-17 04:05:12.850Z" fileName="package_sev_bonusRewardAtSignup.xml"
+                 filePath="/usr/local/neolane/nl6/var/sevenel_mkt_stage1/upload/"
+                 fileSize="17692" objectCount="2"/>
+      <properties>
+        <progress current="0" max="0"/>
+      </properties>
+    </specFile>
+  </entities>
+</package>

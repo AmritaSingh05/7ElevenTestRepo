@@ -1,0 +1,186 @@
+﻿<?xml version='1.0'?>
+<package author="Amrita (amritaks)" buildDate="2022-10-27 04:15:29.559Z" buildNumber="9349"
+         buildVersion="6.7" img="xtk:installedPackage.png" label="SEV_AMS_008_XTKNAVTREE"
+         name="SEV_AMS_008_XTKNAVTREE" namespace="sev" vendor="">
+  <entities schema="xtk:navtree">
+    <navtree entitySchema="xtk:navtree" img="nl:folders.png" label="Schemas Seven Eleven"
+             name="schemas" namespace="sev">
+      <model name="root">
+        <model img="nms:miniatures/mini-offer.png" label="Offer management" name="interaction"
+               order="60">
+          <nodeModel folderLink="category" form="xtk:folder" img="nms:offerCategory.png"
+                     label="Offer category" name="nmsOfferCategory" schema="nms:offerCategory">
+            <command desc="Clear Mulesoft Cache" enabledIf="![category/env/@live]"
+                     label="Clear Mulesoft Cache" name="clearMulesoftCache" notVisibleInForm="true"
+                     refreshView="false">
+              <soapCall name="ClearCacheAll" service="nms:offer">
+                <param exprIn="'TEST'" type="string"/>
+              </soapCall>
+            </command>
+
+            <command desc="Publish Content and Eligibility" enabledIf="![category/env/@live]"
+                     label="Publish Content and Eligibility" name="publishOffers"
+                     notVisibleInForm="true" refreshView="false">
+              <soapCall name="PublishOffers" service="nms:offer"/>
+            </command>
+          </nodeModel>
+        </model>
+        <model label="7-Eleven Referential Table" name="sev:sevRefTable">
+
+          <nodeModel label="Account" name="account">
+            <view name="Account" schema="sev:account" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Transaction Headers" name="transactionHeader">
+            <view name="Transaction Headers" schema="sev:transactionHeader" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Features" name="feature">
+            <view name="Features" schema="sev:feature" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Segments" name="segment">
+            <view name="Segments" schema="sev:segment" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Feature Allocations" name="featureAllocation">
+            <view name="Feature Allocations" schema="sev:featureAllocation" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Proposition Rcp Archives" name="propositionRcpArchive">
+            <view name="Proposition Rcp Archives" schema="sev:propositionRcpArchive"
+                  type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Devices" name="device">
+            <view name="Devices" schema="sev:device" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="NPS" name="nps">
+            <view name="NPS" schema="sev:nps" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Address" name="address">
+            <view name="Address" schema="sev:address" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Transactions Detail" name="transactionDetail">
+            <view name="Transactions Detail" schema="sev:transactionDetail" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Transactions Payment" name="transactionPayment">
+            <view name="Transactions Payment" schema="sev:transactionPayment" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Aggregates" name="aggregate">
+            <view name="Aggregates" schema="sev:aggregate" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+
+          <nodeModel label="Fuel Locks" name="fuelLock">
+            <view name="Fuel Locks" schema="sev:fuelLock" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Store Details" name="storeDetails">
+            <view name="Store Details" schema="sev:storeDetails" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Fuel Savings" name="fuelSavings">
+            <view name="Fuel Savings" schema="sev:fuelSavings" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+          <nodeModel label="Visits" name="visit">
+            <view name="Visits" schema="sev:visit" type="listdet">
+              <columns>
+                <node xpath="[.]"/>
+              </columns>
+            </view>
+          </nodeModel>
+
+        </model>
+
+
+      </model>
+    </navtree>
+  </entities>
+  <entities schema="xtk:specFile">
+    <specFile img="xtk:installedPackage.png" includeDefaultValues="false" includeInstallScript="false"
+              includeSpec="true" label="SEV_AMS_008_XTKNAVTREE" name="SEV_AMS_008_XTKNAVTREE"
+              namespace="sev" type="0">
+      <desc><![CDATA[SEV_AMS_008_XTKNAVTREE]]></desc>
+      <definition automaticDefinition="false" id="783089747" lineCountMax="5000"
+                  schema="xtk:navtree">
+        <where displayFilter="namespace equal to 'sev'">
+          <condition compositeKey="" dependkey="" enabledIf="" expr="@namespace = 'sev'"
+                     internalId="783417428"/>
+        </where>
+      </definition>
+      <execution buildDate="2020-04-13 23:48:31.611Z" fileName="package_sev_SEV_AMS_008_XTKNAVTREE.xml"
+                 filePath="/usr/local/neolane/nl6/var/sevenel_mkt_stage1/upload/"
+                 fileSize="5618" objectCount="1"/>
+      <properties>
+        <progress current="0" max="0"/>
+      </properties>
+    </specFile>
+  </entities>
+</package>
